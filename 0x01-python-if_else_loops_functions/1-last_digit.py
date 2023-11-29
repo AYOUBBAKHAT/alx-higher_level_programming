@@ -7,7 +7,7 @@ print{
         "Last digit of {:d} is {:d} and is "
         .format(number, mod), end="")
 if mod > 5:
-    print("great than 5")
+    print("greater than 5")
 elif mod == 0:
     print("0")
 else:
