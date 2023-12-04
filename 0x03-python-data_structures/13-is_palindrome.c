@@ -16,7 +16,7 @@ int is_palindrome(listint_t **head)
 /**
  * aux_palind - funct to know if is palindrome
  * @head: head list
- * Bend: end list
+ * @end: end list
  */
 int aux_palind(listint_t **head, listint_t *end)
 {	
