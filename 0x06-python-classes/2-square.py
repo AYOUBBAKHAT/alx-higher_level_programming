@@ -10,7 +10,7 @@ class Square:
         """Constructor.
 
         Args:
-            size: length of a side of the square.
+            size: Length of a side of the square.
 
         Raises:
             TypeError: If size is not an integer
