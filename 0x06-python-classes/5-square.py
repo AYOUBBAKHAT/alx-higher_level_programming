@@ -9,9 +9,9 @@ class Square:
         """Constructor.
 
         Args:
-            size: Length of a side of the square.
+            size: length of a side of the square.
         """
-        self.size = size
+        self.__size = size
 
     @property
     def size(self):
@@ -23,7 +23,7 @@ class Square:
         """
         return self.__size
 
-     @size.setter
+    @size.setter
     def size(self, value):
         if not isinstance(value, int):
             raise TypeError('size must be an integer')
