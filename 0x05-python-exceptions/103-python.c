@@ -19,8 +19,8 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	d = ((PyFloatObject *)p)->ob_fval;
-	printf("  value: %s\n", string);
-	PyOS_double_to_string(value, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
+	printf("  value: %s\n",
+	PyOS_double_to_string(d, 'r', 0, Py_DTSF_ADD_DOT_0, NULL));
 }
 
 /**
@@ -29,7 +29,7 @@ void print_python_float(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	size_t i, len,  size;
+	size_t i, len, size;
 	char *str;
 
 	setbuf(stdout, NULL);
@@ -46,10 +46,9 @@ void print_python_bytes(PyObject *p)
 	printf("  trying string: %s\n", str);
 	printf("  first %lu bytes: ", len);
 	for (i = 0; i < len; i++)
-	{
 		printf("%02hhx%s", str[i], i + 1 < len ? " " : "");
-		printf("\n");
-	}
+	printf("\n");
+}
 
 /**
  * print_python_list - prints info about python lists
@@ -63,7 +62,7 @@ void print_python_bytes(PyObject *p)
 	printf("[*] Python list info\n");
 	if (strcmp(p->ob_type->tp_name, "list"))
 	{
-		printf(" [ERROR] Invalid List object\n");
+		printf(" [ERROR] Invalid List Object\n");
 		return;
 	}
 	printf("[*] size of the Python List = %lu\n", ((PyVarObject *)p)->ob_size);
@@ -71,7 +70,7 @@ void print_python_bytes(PyObject *p)
 	for (i = 0; i < ((PyVarObject *)p)->ob_size; i++)
 	{
 		printf("Element %d: %s\n", i,
-				((PyListObject *)p)->ob_item[i]->ob_type->tp_name);
+			((PyListObject *)p)->ob_item[i]->ob_type->tp_name);
 		if (!strcmp(((PyListObject *)p)->ob_item[i]->ob_type->tp_name, "bytes"))
 			print_python_bytes(((PyListObject *)p)->ob_item[i]);
 		else if (!strcmp(((PyListObject *)p)->ob_item[i]->ob_type->tp_name, "float"))
