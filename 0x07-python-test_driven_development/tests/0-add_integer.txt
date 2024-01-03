@@ -1,0 +1,98 @@
+"""
+Unit Test Module for the add_integer function
+=============================================
+
+To use the add_integer function
+-------------------------------
+
+This module is written in restructured text format.
+Start by importing the add_integer function from the 0-add_integer module:
+
+    >>> from 0-add_integer import add_integer
+
+Check for the module docstring:
+
+    >>> module_docstring = __import__('0-add_integer').__doc__
+    >>> len(module_docstring) > 1 
+    True
+
+Check for the function docstring:
+
+    >>> function_docstring = add_integer.__doc__
+    >>> len(function_docstring) > 1
+    True
+         
+Basic usage:
+
+    >>> add_integer(1, 2)
+    3
+    
+Test with one integer argument:
+
+    >>> add_integer(2)
+    100
+
+Test with one integer argument and default second:
+
+    >>> add_integer(0)
+    98
+
+Check addition with positive and negative values:
+
+    >>> add_integer(2, -4)
+    -2 
+
+Check addition with negative and positive values:
+
+    >>> add_integer(-6, 8)
+    2
+
+Check addition over multiple values:
+
+    >>> [add_integer(i, i ** 2) for i in range(6)]
+    [0, 2, 6, 12, 20, 30]
+
+Float and negative input:
+
+    >>> add_integer(100.3, -2)
+    98
+
+Float overflow:
+
+    >>> add_integer(1500.5)
+    1598
+
+Float NaN:
+
+    >>> add_integer(float('NaN'))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+
+String input:
+
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+None input:
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Double negative float input:
+
+    >>> add_integer(-100.5, -10.8)
+    -110
+
+Double string input:
+
+    >>> add_integer("holberton", "school")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+"""
+
