@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-task7 Module.
+Script that adds all arguments to a Python list.
 """
 
 import sys
