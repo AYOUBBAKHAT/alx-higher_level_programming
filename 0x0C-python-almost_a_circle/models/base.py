@@ -124,5 +124,4 @@ class Base:
             for row in reader:
                 instance = cls.from_csv_row(row)
                 instances.append(instance)
-        return instance
-
+        return instances
