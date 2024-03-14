@@ -1,10 +1,13 @@
 #!/usr/bin/node
-const x = process.argv[2];
-if (isNaN(x) || x === undefined) {
-	console.log("Missing number of occurrences");
+const process = require('process');
+let numOfTimes = parseInt(process.argv[2]);
+const message1 = 'Missing number of occurrences';
+const message2 = 'C is fun';
+if (isNaN(numOfTimes)) {
+	console.log(message1);
 } else {
-	const num = parseInt(x);
-	for (let i = 0; i < num; i++) {
-		console.log("C is fun");
+	while (numOfTimes > 0) {
+		console.log(message2);
+		numOfTimes--;
 	}
 }
