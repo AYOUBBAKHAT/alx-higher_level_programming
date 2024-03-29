@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Script that takes in a URL, sends a request to the URL and displays
 the body of the response.
