@@ -1,28 +1,34 @@
 #!/usr/bin/python3
+"""
+StateCity module
+"""
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 from relationship_state import Base, State
 from relationship_city import City
-from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy import create_engine
 import sys
-"""
-    Module that performs MySQL query through MySQLAlchemy.
-"""
+
+
+def fetch_city_state():
+    """Fetches states cities"""
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        username, password, database), pool_pre_ping=True)
+
+    Base.metadata.create_all(engine)
+    Session = sessionmaker()
+    Session.configure(bind=engine)
+    session = Session()
+
+    for city in session.query(City).order_by(City.id).all():
+        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+
+    session.commit()
+    session.close()
 
 
 if __name__ == "__main__":
-    db_uri = 'mysql+mysqldb://{}:{}@localhost/{}'.format(
-                                                            sys.argv[1],
-                                                            sys.argv[2],
-                                                            sys.argv[3])
-
-    engine = create_engine(db_uri, pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    for a_city in session.query(City).order_by(City.id):
-            print("{}: {} -> {}".format(a_city.id, a_city.name,
-                  a_city.state.name))
-
-    session.close()
+    fetch_city_state()
